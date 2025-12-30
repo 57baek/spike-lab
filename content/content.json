@@ -1,0 +1,240 @@
+{
+    "meta": {
+        "title": "SPIKE LAB - Cleveland Clinic",
+        "description": "A small group of otters researching important topics such as floating, holding hands, finding shiny things, and figuring out why some rocks are better than others."
+    },
+
+    "hero": {
+        "labName": "SPIKE LAB",
+        "tagline1": "Welcome to SPIKE LAB",
+        "tagline2": "The Epilepsy Research Team at Cleveland Clinic"
+    },
+
+    "sections": {
+        "about": {
+            "title": "About",
+            "text": "SPIKE LAB is an otter-operated research group at Cleveland Clinic, where highly motivated otters investigate puzzling phenomena by observing, poking, floating, arguing over rocks, and refusing to give up until patterns emerge. The lab values curiosity, persistence, and careful re-checking—often underwater—because conclusions should survive distraction, repetition, and being accidentally dropped. Snacks are part of the workflow. Tools are occasionally lost. Insight is achieved anyway."
+        },
+
+        "research": {
+            "title": "Research",
+            "items": [
+                {
+                    "name": "Ripples",
+                    "description": "We investigate where signals truly come from by patiently watching ripples spread and asking which rock was thrown first. Rather than guessing, we weigh possibilities, update beliefs, and refuse to commit until the evidence floats back to the surface. Uncertainty is not a failure - it is something to be carried carefully, like a favorite stone.",
+                    "image": "assets/research/ripples.jpg",
+                    "alt": "Ripples spreading across water"
+                },
+                {
+                    "name": "Storm",
+                    "description": "Complex events rarely announce their beginnings clearly. We study long, tangled sequences to understand how calm turns into chaos, tracing the earliest hints of disturbance through hidden channels. Our goal is not just to observe the storm, but to learn where it gathers strength before it breaks.",
+                    "image": "assets/research/storm.jpg",
+                    "alt": "Dark water forming a storm pattern"
+                },
+                {
+                    "name": "Waves",
+                    "description": "Messy waves contain structure if you stare at them long enough. We develop methods that sift through noise, overlap, and confusion to uncover patterns that persist across time, depth, and repeated splashing. When signals look meaningless, we assume they are merely misunderstood.",
+                    "image": "assets/research/waves.jpg",
+                    "alt": "Overlapping waves on the surface of water"
+                },
+                {
+                    "name": "Water",
+                    "description": "Models should not be mysterious creatures lurking beneath the surface. We build systems that explain what they know, admit what they do not, and remain reliable even when conditions change. If a model cannot justify itself clearly, it is sent back for further swimming.",
+                    "image": "assets/research/water.jpg",
+                    "alt": "Clear water with visible depth"
+                },
+                {
+                    "name": "Otter",
+                    "description": "When something misbehaves, we poke it. If it still misbehaves, we poke it again, from another angle, possibly while floating upside down. Bugs are tracked patiently, assumptions are questioned repeatedly, and nothing is trusted simply because it worked once.",
+                    "image": "assets/research/otter.jpg",
+                    "alt": "Otter floating on its back"
+                }
+            ]
+        },
+
+        "people": {
+            "title": "People",
+            "groups": [
+                {
+                    "groupTitle": "Faculty",
+                    "members": [
+                        {
+                            "name": "Michael Danson, Ph.D",
+                            "role": "Principal Investigator",
+                            "email": "otter4ever@cuyahoga.com",
+                            "photo": "assets/people/Michael-Danson.jpeg",
+                            "description": "Leads the Otter Intelligence Group with 12+ years of experience in dam construction, river topology, and experimental stick placement. Known for calmly redesigning the lab’s entire research direction while floating on his back.",
+                            "links": {
+                                "scholar": "https://scholar.google.com/citations?user=XXXX",
+                                "linkedin": "https://www.linkedin.com/in/XXXX",
+                                "github": "https://www.github.com/in/XXXX"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "groupTitle": "Postdoctoral Researchers",
+                    "members": [
+                        {
+                            "name": "Eleanor Shellstrop, Ph.D",
+                            "role": "Postdoctoral Fellow",
+                            "email": "otter4ever@cuyahoga.com",
+                            "photo": "assets/people/Eleanor-Shellstrop.jpeg",
+                            "description": "Specializes in ethical decision-making under snack scarcity. Frequently questions the PI’s methods, but secretly optimizes them when no one is watching.",
+                            "links": {
+                                "scholar": "https://scholar.google.com/citations?user=XXXX",
+                                "linkedin": "https://www.linkedin.com/in/XXXX",
+                                "github": "https://www.github.com/in/XXXX"
+                            }
+                        },
+                        {
+                            "name": "Tahani Al-Jamil, Ph.D",
+                            "role": "Postdoctoral Fellow",
+                            "email": "otter4ever@cuyahoga.com",
+                            "photo": "assets/people/Tahani-Al-Jamil.jpeg",
+                            "description": "Focuses on high-impact collaboration and international outreach. Has co-authored papers with every major river system and makes sure everyone knows it.",
+                            "links": {
+                                "scholar": "https://scholar.google.com/citations?user=XXXX",
+                                "linkedin": "https://www.linkedin.com/in/XXXX",
+                                "github": "https://www.github.com/in/XXXX"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "groupTitle": "Graduate Students",
+                    "members": [
+                        {
+                            "name": "Janet Carden",
+                            "role": "Ph.D. Student",
+                            "email": "otter4ever@cuyahoga.com",
+                            "photo": "assets/people/Janet-Carden.jpeg",
+                            "description": "An endlessly helpful research assistant who somehow already knows the answer before the question is asked. Can retrieve any dataset, stick, or mollusk on demand, and patiently reassures the lab that everything is, in fact, okay.",
+                            "links": {
+                                "scholar": "https://scholar.google.com/citations?user=XXXX",
+                                "linkedin": "https://www.linkedin.com/in/XXXX",
+                                "github": "https://www.github.com/in/XXXX"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "groupTitle": "Undergraduate Students",
+                    "members": [
+                        {
+                            "name": "Jason Mendoza",
+                            "role": "Undergraduate Student",
+                            "email": "otter4ever@cuyahoga.com",
+                            "photo": "assets/people/Jason-Mendoza.jpeg",
+                            "description": "Works on Monte Carlo simulations by randomly splashing in the river and seeing what happens. Accidentally discovers new phenomena on a weekly basis.",
+                            "links": {
+                                "scholar": "https://scholar.google.com/citations?user=XXXX",
+                                "linkedin": "https://www.linkedin.com/in/XXXX",
+                                "github": "https://www.github.com/in/XXXX"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "groupTitle": "Alumni",
+                    "members": [
+                        {
+                            "name": "Chidi Anagonye",
+                            "role": "Alumni (Former Graduate Student)",
+                            "email": "otter4ever@cuyahoga.com",
+                            "photo": "assets/people/Chidi-Anagonye.jpeg",
+                            "description": "Completed a dissertation on decision paralysis in otter populations. Currently resting somewhere quiet, still trying to decide if the thesis was good enough.",
+                            "links": {
+                                "scholar": "https://scholar.google.com/citations?user=XXXX",
+                                "linkedin": "https://www.linkedin.com/in/XXXX",
+                                "github": "https://www.github.com/in/XXXX"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+
+        "publications": {
+            "title": "Publications",
+            "groups": [
+                {
+                    "year": 2025,
+                    "items": [
+                        {
+                            "text": "Danson, M., Shellstrop, E. Floating-Point Ethics: Decision-Making Under Snack Scarcity in River Otters. Journal of Aquatic Intelligence, 2025.",
+                            "url": "https://doi.org/10.XXXX/otter-ethics"
+                        }
+                    ]
+                },
+                {
+                    "year": 2024,
+                    "items": [
+                        {
+                            "text": "Mendoza, J., Carden, J. Monte Carlo Methods via Random Splashing: A Probabilistic Study of River Dynamics. Proceedings of the International Conference on Otter Computing, 2024.",
+                            "url": "https://arxiv.org/abs/XXXX.XXXXX"
+                        }
+                    ]
+                },
+                {
+                    "year": 2023,
+                    "items": [
+                        {
+                            "text": "Al-Jamil, T., Anagonye, C. Collaborative Stick Allocation in Multi-Agent Otter Systems. Transactions on Computational Ecology, 2023.",
+                            "url": "https://doi.org/10.XXXX/otter-sticks"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        "photos": {
+            "title": "Photos",
+            "items": [
+                {
+                    "src": "assets/photos/photo-1.jpeg",
+                    "alt": "Lab members gathered by the river",
+                    "caption": "Weekly lab gathering where ideas, snacks, and sticks are exchanged freely."
+                },
+                {
+                    "src": "assets/photos/photo-2.jpeg",
+                    "alt": "Field research in progress",
+                    "caption": "Conducting field experiments directly in the river for maximum ecological realism."
+                },
+                {
+                    "src": "assets/photos/photo-3.jpeg",
+                    "alt": "Otters collaborating on a problem",
+                    "caption": "Intense collaboration session focused on solving very important scientific questions."
+                },
+                {
+                    "src": "assets/photos/photo-4.jpeg",
+                    "alt": "Relaxed lab discussion",
+                    "caption": "Informal discussions that somehow still lead to publishable insights."
+                },
+                {
+                    "src": "assets/photos/photo-5.jpeg",
+                    "alt": "Celebration after a successful result",
+                    "caption": "Celebrating a successful result with synchronized floating and quiet satisfaction."
+                },
+                {
+                    "src": "assets/photos/photo-6.jpeg",
+                    "alt": "Lab members enjoying time together",
+                    "caption": "A rare moment of calm before the next round of experiments begins."
+                }
+            ]
+        },
+
+        "contact": {
+            "title": "Contact",
+            "lines": [
+                "We are always looking for curious and motivated students and collaborators interested in computational neuroscience and signal modeling.",
+                "If you are interested in working with us or have any inquiry, please contact our principal investigator."
+            ]
+        },
+
+        "footer": {
+            "copyright": "All rights reserved.",
+            "disclaimer": "Seizure visualizations on this site are AI-generated and do not include real patient data."
+        }
+    }
+}
