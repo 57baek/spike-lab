@@ -22,31 +22,31 @@
                 {
                     "name": "Ripples",
                     "description": "We investigate where signals truly come from by patiently watching ripples spread and asking which rock was thrown first. Rather than guessing, we weigh possibilities, update beliefs, and refuse to commit until the evidence floats back to the surface. Uncertainty is not a failure - it is something to be carried carefully, like a favorite stone.",
-                    "image": "assets/research/ripples.jpg",
+                    "image": "assets/research/ripples.svg",
                     "alt": "Ripples spreading across water"
                 },
                 {
                     "name": "Storm",
                     "description": "Complex events rarely announce their beginnings clearly. We study long, tangled sequences to understand how calm turns into chaos, tracing the earliest hints of disturbance through hidden channels. Our goal is not just to observe the storm, but to learn where it gathers strength before it breaks.",
-                    "image": "assets/research/storm.jpg",
+                    "image": "assets/research/storm.svg",
                     "alt": "Dark water forming a storm pattern"
                 },
                 {
                     "name": "Waves",
                     "description": "Messy waves contain structure if you stare at them long enough. We develop methods that sift through noise, overlap, and confusion to uncover patterns that persist across time, depth, and repeated splashing. When signals look meaningless, we assume they are merely misunderstood.",
-                    "image": "assets/research/waves.jpg",
+                    "image": "assets/research/waves.svg",
                     "alt": "Overlapping waves on the surface of water"
                 },
                 {
                     "name": "Water",
                     "description": "Models should not be mysterious creatures lurking beneath the surface. We build systems that explain what they know, admit what they do not, and remain reliable even when conditions change. If a model cannot justify itself clearly, it is sent back for further swimming.",
-                    "image": "assets/research/water.jpg",
+                    "image": "assets/research/water.svg",
                     "alt": "Clear water with visible depth"
                 },
                 {
                     "name": "Otter",
                     "description": "When something misbehaves, we poke it. If it still misbehaves, we poke it again, from another angle, possibly while floating upside down. Bugs are tracked patiently, assumptions are questioned repeatedly, and nothing is trusted simply because it worked once.",
-                    "image": "assets/research/otter.jpg",
+                    "image": "assets/research/otter.svg",
                     "alt": "Otter floating on its back"
                 }
             ]

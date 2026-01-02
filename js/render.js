@@ -13,7 +13,7 @@ function $(id) {
 
 function setText(id, text) {
     const el = $(id);
-    if (!el) return; 
+    if (!el) return;
     el.textContent = text ?? "";
 }
 
