@@ -65,10 +65,9 @@ function renderHeader(data) {
     const labName = data.head?.labName ?? "";
     setText("brand-name", labName);
 
-    const logo = data.header?.labLogo;
-    if (!logo) return;
-    setAttr("brand-logo", "src", logo.src);
-    setAttr("brand-logo", "alt", logo.alt ?? "");
+    //const logo = data.header?.labLogo;
+    //if (logo?.src) setAttr("brand-logo", "src", logo.src);
+    //setAttr("brand-logo", "alt", logo?.alt ?? `${labName} logo`);
 }
 
 function renderHero(data) {
@@ -76,13 +75,13 @@ function renderHero(data) {
     setText("hero-tagline-1", hero.tagline1 ?? "");
     setText("hero-tagline-2", hero.tagline2 ?? "");
 
-    if (hero.logo) {
-        setAttr("hero-logo", "src", hero.logo.src);
-        setAttr("hero-logo", "alt", hero.logo.alt ?? "");
-    }
     if (hero.animation) {
         setAttr("hero-animation", "src", hero.animation.src);
         setAttr("hero-animation", "alt", hero.animation.alt ?? "");
+    }
+    if (hero.logo) {
+        setAttr("hero-logo", "src", hero.logo.src);
+        setAttr("hero-logo", "alt", hero.logo.alt ?? "");
     }
 }
 
@@ -90,7 +89,6 @@ function renderAbout(data) {
     const about = data.main?.about;
     if (!about) return;
     setText("about-title", about.title ?? "About");
-
     setText("about-text", about.text ?? "");
 }
 
@@ -330,15 +328,59 @@ function renderContact(data) {
     const contact = data.main?.contact;
     if (!contact) return;
     setText("contact-title", contact.title ?? "Contact");
-    setText("contact-text", contact.text ?? "");
+
+    const container = $("contact-text");
+    if (!container) return;
+    clearChildren(container);
+    const text = contact.text ?? "";
+    const email = contact.email ?? "";
+    const linkText = "principal investigator";
+    if (!email || !text.includes(linkText)) {
+        container.textContent = text;
+        return;
+    }
+    const [before, after] = text.split(linkText);
+    container.appendChild(document.createTextNode(before));
+    container.appendChild(
+        el("a", {
+            text: linkText,
+            attrs: {
+                href: `mailto:${email}`,
+            },
+        })
+    );
+    container.appendChild(document.createTextNode(after));
 }
 
 function renderFooter(data) {
     setText("year", String(new Date().getFullYear()));
     const footer = data.footer ?? {};
-    setText("footer-creator", footer.creator ?? "");
-    setText("footer-copyright", footer.copyright ?? "");
+    setText("footer-owner", footer.owner ?? "");
     setText("footer-disclaimer", footer.disclaimer ?? "");
+
+    const licenseEl = $("footer-license");
+    if (!licenseEl) return;
+    clearChildren(licenseEl);
+    const text = footer.licenseText ?? "";
+    const url = footer.sourceCode ?? "";
+    const linkText = "Website source code";
+    if (!url || !text.includes(linkText)) {
+        licenseEl.textContent = text;
+        return;
+    }
+    const [before, after] = text.split(linkText);
+    licenseEl.appendChild(document.createTextNode(before));
+    licenseEl.appendChild(
+        el("a", {
+            text: linkText,
+            attrs: {
+                href: url,
+                target: "_blank",
+                rel: "noopener noreferrer",
+            },
+        })
+    );
+    licenseEl.appendChild(document.createTextNode(after));
 }
 
 async function main() {
@@ -357,6 +399,10 @@ async function main() {
         renderFooter(data);
     } catch (err) {
         console.error(err);
+        document.body.insertAdjacentHTML(
+            "afterbegin",
+            '<p style="padding:1rem;color:#b00020;">Content failed to load. Please refresh.</p>'
+        );
     }
 }
 

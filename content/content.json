@@ -257,13 +257,15 @@
 
         "contact": {
             "title": "Contact",
-            "text": "We are always looking for curious and motivated researchers and collaborators. If you are interested in working with us or have any inquiry, please feel free to contact our principal investigator!"
+            "text": "We are always looking for curious and motivated researchers and collaborators. If you are interested in working with us or have any inquiry, please feel free to contact our principal investigator!",
+            "email": "otter4ever@cuyahoga.com"
         }
     },
 
     "footer": {
-        "creator": "HyangMok Baek",
-        "copyright": "All rights reserved.",
-        "disclaimer": "Seizure visualizations on this site are AI-generated and do not include real patient data."
+        "owner": "SPIKE LAB. All rights reserved.",
+        "licenseText": "Website source code is licensed under the MIT License.",
+        "sourceCode": "https://www.github.com/in/XXXX",
+        "disclaimer": "Seizure visualizations are AI-generated and do not include real patient data."
     }
 }
