@@ -3,21 +3,19 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!-- Title and Description (SEO) - can be updated by JS -->
-        <title>Lab</title>
+        <!-- SEO (filled by JS) -->
+        <title></title>
         <meta name="description" content="" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="assets/logos/spike-lab-logo.png"
-        />
+        <!-- Favicon -->
+        <link id="favicon" rel="icon" />
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <!-- Fonts: EB Garamond + Google Sans -->
         <link
             href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
             rel="stylesheet"
         />
+        <!-- CSS -->
         <link rel="stylesheet" href="css/styles.css" />
     </head>
 
@@ -26,13 +24,8 @@
         <header class="site-header">
             <div class="nav-wrapper">
                 <a class="brand" href="#hero" aria-label="Go to top">
-                    <img
-                        id="brand-logo"
-                        class="brand-logo"
-                        src="assets/logos/lab-logo.png"
-                        alt="Lab logo"
-                    />
                     <span id="brand-name" class="brand-name"></span>
+                    <img id="brand-logo" class="brand-logo" alt="" />
                 </a>
 
                 <nav aria-label="Site navigation">
@@ -53,19 +46,13 @@
             <div class="hero-bg" aria-hidden="true"></div>
             <div class="hero-content">
                 <div class="hero-visuals">
-                    <img
-                        src="assets/logos/cleveland-clinic-logo.png"
-                        alt="Cleveland Clinic logo"
-                        class="hero-logo"
-                    />
-                    <img
-                        src="assets/backgrounds/seizure.gif"
-                        alt="Seizure gif"
-                        class="hero-logo"
-                    />
+                    <img id="hero-logo" class="hero-logo" alt="" />
+                    <img id="hero-animation" class="hero-animation" alt="" />
                 </div>
-                <h1 id="hero-lab-name"></h1>
-                <p id="hero-tagline"></p>
+                <div class="hero-texts">
+                    <p id="hero-tagline-1" class="hero-tagline-1"></p>
+                    <p id="hero-tagline-2" class="hero-tagline-2"></p>
+                </div>
             </div>
         </section>
 
@@ -73,38 +60,38 @@
         <main class="page">
             <!-- ABOUT -->
             <section id="about">
-                <h2 id="about-title">About</h2>
+                <h2 id="about-title"></h2>
                 <p id="about-text"></p>
             </section>
 
             <!-- RESEARCH -->
             <section id="research">
-                <h2 id="research-title">Research</h2>
+                <h2 id="research-title"></h2>
                 <ul id="research-list"></ul>
             </section>
 
             <!-- PEOPLE -->
             <section id="people">
-                <h2 id="people-title">People</h2>
+                <h2 id="people-title"></h2>
                 <div id="people-list"></div>
             </section>
 
             <!-- PUBLICATIONS -->
             <section id="publications">
-                <h2 id="publications-title">Publications</h2>
+                <h2 id="publications-title"></h2>
                 <div id="publications-list"></div>
             </section>
 
             <!-- PHOTOS -->
             <section id="photos" aria-label="Lab photos">
-                <h2 id="photos-title">Photos</h2>
+                <h2 id="photos-title"></h2>
                 <div id="photos-grid"></div>
             </section>
 
             <!-- CONTACT -->
             <section id="contact">
-                <h2 id="contact-title">Contact</h2>
-                <div id="contact-lines"></div>
+                <h2 id="contact-title"></h2>
+                <div id="contact-text"></div>
             </section>
         </main>
 
@@ -113,7 +100,7 @@
             <div class="footer-left">
                 <p>
                     &copy; <span id="year"></span>
-                    <span id="footer-lab-name"></span>.
+                    <span id="footer-creator"></span>.
                     <span id="footer-copyright"></span>
                 </p>
             </div>

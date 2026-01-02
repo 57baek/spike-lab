@@ -1,16 +1,35 @@
 {
+    "head": {
+        "labName": "SPIKE LAB",
+        "favicon": "assets/logos/lab-logo.png"
+    },
+
     "meta": {
         "title": "SPIKE LAB - Cleveland Clinic",
         "description": "A small group of otters researching important topics such as floating, holding hands, finding shiny things, and figuring out why some rocks are better than others."
     },
 
-    "hero": {
-        "labName": "SPIKE LAB",
-        "tagline1": "Welcome to SPIKE LAB",
-        "tagline2": "The Epilepsy Research Team at Cleveland Clinic"
+    "header": {
+        "labLogo": {
+            "src": "assets/logos/lab-logo.png",
+            "alt": "Lab logo"
+        }
     },
 
-    "sections": {
+    "hero": {
+        "tagline1": "Welcome to SPIKE LAB",
+        "tagline2": "The Epilepsy Research Team at Cleveland Clinic",
+        "logo": {
+            "src": "assets/logos/cleveland-clinic-logo.png",
+            "alt": "Cleveland Clinic logo"
+        },
+        "animation": {
+            "src": "assets/backgrounds/seizure.gif",
+            "alt": "Seizure visualization animation"
+        }
+    },
+
+    "main": {
         "about": {
             "title": "About",
             "text": "SPIKE LAB is an otter-operated research group at Cleveland Clinic, where highly motivated otters investigate puzzling phenomena by observing, poking, floating, arguing over rocks, and refusing to give up until patterns emerge. The lab values curiosity, persistence, and careful re-checking—often underwater—because conclusions should survive distraction, repetition, and being accidentally dropped. Snacks are part of the workflow. Tools are occasionally lost. Insight is achieved anyway."
@@ -113,7 +132,7 @@
                             "links": {
                                 "scholar": "https://scholar.google.com/citations?user=XXXX",
                                 "linkedin": "https://www.linkedin.com/in/XXXX",
-                                "github": "https://www.github.com/in/XXXX"
+                                "github": ""
                             }
                         }
                     ]
@@ -129,8 +148,8 @@
                             "description": "Works on Monte Carlo simulations by randomly splashing in the river and seeing what happens. Accidentally discovers new phenomena on a weekly basis.",
                             "links": {
                                 "scholar": "https://scholar.google.com/citations?user=XXXX",
-                                "linkedin": "https://www.linkedin.com/in/XXXX",
-                                "github": "https://www.github.com/in/XXXX"
+                                "linkedin": "",
+                                "github": ""
                             }
                         }
                     ]
@@ -145,14 +164,26 @@
                             "photo": "assets/people/Chidi-Anagonye.jpeg",
                             "description": "Completed a dissertation on decision paralysis in otter populations. Currently resting somewhere quiet, still trying to decide if the thesis was good enough.",
                             "links": {
-                                "scholar": "https://scholar.google.com/citations?user=XXXX",
-                                "linkedin": "https://www.linkedin.com/in/XXXX",
-                                "github": "https://www.github.com/in/XXXX"
+                                "scholar": "",
+                                "linkedin": "",
+                                "github": ""
                             }
                         }
                     ]
                 }
-            ]
+            ],
+            "githubIcon": {
+                "src": "assets/icons/github-icon.svg",
+                "alt": "Github icon"
+            },
+            "linkedInIcon": {
+                "src": "assets/icons/linkedin-icon.svg",
+                "alt": "LinedIn icon"
+            },
+            "googleScholarIcon": {
+                "src": "assets/icons/google-scholar-icon.svg",
+                "alt": "Google Scholar icon"
+            }
         },
 
         "publications": {
@@ -172,7 +203,7 @@
                     "items": [
                         {
                             "text": "Mendoza, J., Carden, J. Monte Carlo Methods via Random Splashing: A Probabilistic Study of River Dynamics. Proceedings of the International Conference on Otter Computing, 2024.",
-                            "url": "https://arxiv.org/abs/XXXX.XXXXX"
+                            "url": ""
                         }
                     ]
                 },
@@ -181,7 +212,7 @@
                     "items": [
                         {
                             "text": "Al-Jamil, T., Anagonye, C. Collaborative Stick Allocation in Multi-Agent Otter Systems. Transactions on Computational Ecology, 2023.",
-                            "url": "https://doi.org/10.XXXX/otter-sticks"
+                            "url": "https://arxiv.org/abs/XXXX.XXXXX"
                         }
                     ]
                 }
@@ -192,32 +223,32 @@
             "title": "Photos",
             "items": [
                 {
-                    "src": "assets/photos/photo-1.jpeg",
+                    "image": "assets/photos/photo-1.jpeg",
                     "alt": "Lab members gathered by the river",
                     "caption": "Weekly lab gathering where ideas, snacks, and sticks are exchanged freely."
                 },
                 {
-                    "src": "assets/photos/photo-2.jpeg",
+                    "image": "assets/photos/photo-2.jpeg",
                     "alt": "Field research in progress",
                     "caption": "Conducting field experiments directly in the river for maximum ecological realism."
                 },
                 {
-                    "src": "assets/photos/photo-3.jpeg",
+                    "image": "assets/photos/photo-3.jpeg",
                     "alt": "Otters collaborating on a problem",
                     "caption": "Intense collaboration session focused on solving very important scientific questions."
                 },
                 {
-                    "src": "assets/photos/photo-4.jpeg",
+                    "image": "assets/photos/photo-4.jpeg",
                     "alt": "Relaxed lab discussion",
                     "caption": "Informal discussions that somehow still lead to publishable insights."
                 },
                 {
-                    "src": "assets/photos/photo-5.jpeg",
+                    "image": "assets/photos/photo-5.jpeg",
                     "alt": "Celebration after a successful result",
                     "caption": "Celebrating a successful result with synchronized floating and quiet satisfaction."
                 },
                 {
-                    "src": "assets/photos/photo-6.jpeg",
+                    "image": "assets/photos/photo-6.jpeg",
                     "alt": "Lab members enjoying time together",
                     "caption": "A rare moment of calm before the next round of experiments begins."
                 }
@@ -226,15 +257,13 @@
 
         "contact": {
             "title": "Contact",
-            "lines": [
-                "We are always looking for curious and motivated students and collaborators interested in computational neuroscience and signal modeling.",
-                "If you are interested in working with us or have any inquiry, please contact our principal investigator."
-            ]
-        },
-
-        "footer": {
-            "copyright": "All rights reserved.",
-            "disclaimer": "Seizure visualizations on this site are AI-generated and do not include real patient data."
+            "text": "We are always looking for curious and motivated researchers and collaborators. If you are interested in working with us or have any inquiry, please feel free to contact our principal investigator!"
         }
+    },
+
+    "footer": {
+        "creator": "HyangMok Baek",
+        "copyright": "All rights reserved.",
+        "disclaimer": "Seizure visualizations on this site are AI-generated and do not include real patient data."
     }
 }

@@ -44,10 +44,17 @@ function el(tag, { className, text, attrs } = {}) {
     return node;
 }
 
-function renderMeta(data) {
-    // <title> and <meta name="description"> are in <head>, not by id
-    if (data.meta?.title) document.title = data.meta.title;
+function renderFavicon(data) {
+    const faviconPath = data.head?.favicon;
+    if (!faviconPath) return;
+    let link = document.getElementById("favicon");
+    link.href = faviconPath;
+}
 
+function renderMeta(data) {
+    // ---- Title (SEO) ----
+    if (data.meta?.title) document.title = data.meta.title;
+    // ---- Description (SEO) ----
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc && data.meta?.description) {
         metaDesc.setAttribute("content", data.meta.description);
@@ -55,71 +62,64 @@ function renderMeta(data) {
 }
 
 function renderHeader(data) {
-    // brand name in header
-    // You said: use hero.labName as the single source of truth
-    const labName = data.hero?.labName ?? "";
+    const labName = data.head?.labName ?? "";
     setText("brand-name", labName);
 
-    // OPTIONAL: If you later want brand-logo to be driven by JSON,
-    // add something like data.meta.brandLogo and use:
-    // setAttr("brand-logo", "src", data.meta?.brandLogo);
-    // setAttr("brand-logo", "alt", `${labName} logo`);
+    const logo = data.header?.labLogo;
+    if (!logo) return;
+    setAttr("brand-logo", "src", logo.src);
+    setAttr("brand-logo", "alt", logo.alt ?? "");
 }
 
 function renderHero(data) {
-    setText("hero-lab-name", data.hero?.labName ?? "");
+    const hero = data.hero ?? {};
+    setText("hero-tagline-1", hero.tagline1 ?? "");
+    setText("hero-tagline-2", hero.tagline2 ?? "");
 
-    // You have tagline1 + tagline2 (two lines).
-    // Your HTML currently has ONE <p id="hero-tagline"></p>.
-    // So we combine them with a separator. Later, CSS can make it multiline.
-    const t1 = data.hero?.tagline1 ?? "";
-    const t2 = data.hero?.tagline2 ?? "";
-    const combined = [t1, t2].filter(Boolean).join(" - ");
-    setText("hero-tagline", combined);
+    if (hero.logo) {
+        setAttr("hero-logo", "src", hero.logo.src);
+        setAttr("hero-logo", "alt", hero.logo.alt ?? "");
+    }
+    if (hero.animation) {
+        setAttr("hero-animation", "src", hero.animation.src);
+        setAttr("hero-animation", "alt", hero.animation.alt ?? "");
+    }
 }
 
 function renderAbout(data) {
-    const about = data.sections?.about;
+    const about = data.main?.about;
     if (!about) return;
     setText("about-title", about.title ?? "About");
+
     setText("about-text", about.text ?? "");
 }
 
 function renderResearch(data) {
-    const research = data.sections?.research;
+    const research = data.main?.research;
     if (!research) return;
-
     setText("research-title", research.title ?? "Research");
 
     const list = $("research-list");
     if (!list) return;
     clearChildren(list);
-
-    // Your research.items are objects: {name, description, image, alt}
-    for (const item of research.items ?? []) {
+    for (const [index, item] of (research.items ?? []).entries()) {
         const li = el("li", { className: "research-item" });
-
-        // Title
         if (item.name)
             li.appendChild(
                 el("h3", { className: "research-name", text: item.name })
             );
-
-        // Optional image
         if (item.image) {
             li.appendChild(
                 el("img", {
                     className: "research-image",
                     attrs: {
                         src: item.image,
-                        alt: item.alt ?? item.name ?? "Research image",
+                        alt: item.alt ?? `Research image ${index + 1}`,
                         loading: "lazy",
                     },
                 })
             );
         }
-
-        // Description
         if (item.description)
             li.appendChild(
                 el("p", {
@@ -127,36 +127,47 @@ function renderResearch(data) {
                     text: item.description,
                 })
             );
-
         list.appendChild(li);
     }
 }
-
 function renderPeople(data) {
-    const people = data.sections?.people;
+    const people = data.main?.people;
     if (!people) return;
-
     setText("people-title", people.title ?? "People");
 
     const container = $("people-list");
     if (!container) return;
     clearChildren(container);
-
+    // Map link keys -> label + icon object
+    const iconMap = [
+        { key: "linkedin", label: "LinkedIn", icon: people.linkedInIcon },
+        {
+            key: "scholar",
+            label: "Google Scholar",
+            icon: people.googleScholarIcon,
+        },
+        { key: "github", label: "GitHub", icon: people.githubIcon },
+    ];
     for (const group of people.groups ?? []) {
+        // Group
         const groupWrap = el("section", { className: "people-group" });
-        if (group.groupTitle)
+        if (group.groupTitle) {
             groupWrap.appendChild(
                 el("h3", {
                     className: "people-group-title",
                     text: group.groupTitle,
                 })
             );
-
+        }
         const ul = el("ul", { className: "people-cards" });
-
         for (const m of group.members ?? []) {
             const card = el("li", { className: "person-card" });
-
+            // Name
+            if (m.name) {
+                card.appendChild(
+                    el("h4", { className: "person-name", text: m.name })
+                );
+            }
             // Photo
             if (m.photo) {
                 card.appendChild(
@@ -170,116 +181,82 @@ function renderPeople(data) {
                     })
                 );
             }
-
-            // Name + inline links (as you requested: icons next to name)
-            const nameRow = el("div", { className: "person-name-row" });
-
-            const nameEl = el("h4", {
-                className: "person-name",
-                text: m.name ?? "",
-            });
-            nameRow.appendChild(nameEl);
-
+            // Icons
             const links = m.links ?? null;
-            if (links && (links.linkedin || links.scholar || links.github)) {
+            if (links) {
                 const icons = el("div", { className: "person-links" });
-
-                // NOTE: Put your icon PNG/SVG paths here.
-                // Example: assets/icons/linkedin.png, scholar.png, github.png
-                // If you haven't created them yet, keep these and add the files later.
-                const iconMap = [
-                    {
-                        key: "linkedin",
-                        label: "LinkedIn",
-                        icon: "assets/icons/linkedin.png",
-                    },
-                    {
-                        key: "scholar",
-                        label: "Google Scholar",
-                        icon: "assets/icons/scholar.png",
-                    },
-                    {
-                        key: "github",
-                        label: "GitHub",
-                        icon: "assets/icons/github.png",
-                    },
-                ];
-
                 for (const { key, label, icon } of iconMap) {
                     const url = links[key];
-                    if (!url) continue;
-
+                    // Skip rendering this icon if the URL is empty, null, or undefined
+                    if (!url || !icon?.src) continue;
                     const a = el("a", {
-                        className: `person-link person-link-${key}`,
+                        className: "person-link",
                         attrs: {
                             href: url,
                             target: "_blank",
                             rel: "noopener noreferrer",
-                            "aria-label": `${label} profile for ${
-                                m.name ?? "member"
-                            }`,
+                            "aria-label": label,
+                            title: label,
                         },
                     });
-
                     a.appendChild(
                         el("img", {
                             className: "person-link-icon",
-                            attrs: { src: icon, alt: label, loading: "lazy" },
+                            attrs: {
+                                src: icon.src,
+                                alt: icon.alt ?? label,
+                                loading: "lazy",
+                            },
                         })
                     );
-
                     icons.appendChild(a);
                 }
-
-                nameRow.appendChild(icons);
+                // Only add the icons block if at least one icon exists
+                if (icons.childElementCount > 0) {
+                    card.appendChild(icons);
+                }
             }
-
-            card.appendChild(nameRow);
-
             // Role
-            if (m.role)
+            if (m.role) {
                 card.appendChild(
                     el("p", { className: "person-role", text: m.role })
                 );
-
-            // Email (optional)
+            }
+            // Email
             if (m.email) {
                 const emailP = el("p", { className: "person-email" });
-                const emailA = el("a", {
-                    text: m.email,
-                    attrs: { href: `mailto:${m.email}` },
-                });
-                emailP.appendChild(emailA);
+                emailP.appendChild(
+                    el("a", {
+                        text: m.email,
+                        attrs: { href: `mailto:${m.email}` },
+                    })
+                );
                 card.appendChild(emailP);
             }
-
             // Description
-            if (m.description)
+            if (m.description) {
                 card.appendChild(
                     el("p", {
                         className: "person-description",
                         text: m.description,
                     })
                 );
-
+            }
             ul.appendChild(card);
         }
-
         groupWrap.appendChild(ul);
         container.appendChild(groupWrap);
     }
 }
 
 function renderPublications(data) {
-    const pubs = data.sections?.publications;
+    const pubs = data.main?.publications;
     if (!pubs) return;
-
     setText("publications-title", pubs.title ?? "Publications");
 
     const container = $("publications-list");
     if (!container) return;
     clearChildren(container);
-
     for (const group of pubs.groups ?? []) {
         const yearWrap = el("section", { className: "pub-year" });
         if (group.year)
@@ -289,13 +266,11 @@ function renderPublications(data) {
                     text: String(group.year),
                 })
             );
-
         const ul = el("ul", { className: "pub-list" });
-
         for (const item of group.items ?? []) {
             const li = el("li", { className: "pub-item" });
-
             if (item.url) {
+                // Publication has an external link → render as clickable anchor
                 const a = el("a", {
                     className: "pub-link",
                     text: item.text ?? "",
@@ -307,43 +282,38 @@ function renderPublications(data) {
                 });
                 li.appendChild(a);
             } else {
+                // Publication has no URL → render as plain text
                 li.appendChild(el("span", { text: item.text ?? "" }));
             }
-
             ul.appendChild(li);
         }
-
         yearWrap.appendChild(ul);
         container.appendChild(yearWrap);
     }
 }
 
 function renderPhotos(data) {
-    const photos = data.sections?.photos;
+    const photos = data.main?.photos;
     if (!photos) return;
-
     setText("photos-title", photos.title ?? "Photos");
 
     const grid = $("photos-grid");
     if (!grid) return;
     clearChildren(grid);
-
-    for (const item of photos.items ?? []) {
+    for (const [index, item] of (photos.items ?? []).entries()) {
         const figure = el("figure", { className: "photo-card" });
-
-        if (item.src) {
+        if (item.image) {
             figure.appendChild(
                 el("img", {
-                    className: "photo-img",
+                    className: "photo-image",
                     attrs: {
-                        src: item.src,
-                        alt: item.alt ?? "Lab photo",
+                        src: item.image,
+                        alt: item.alt ?? `Photo ${index + 1}`,
                         loading: "lazy",
                     },
                 })
             );
         }
-
         if (item.caption) {
             figure.appendChild(
                 el("figcaption", {
@@ -352,36 +322,21 @@ function renderPhotos(data) {
                 })
             );
         }
-
         grid.appendChild(figure);
     }
 }
 
 function renderContact(data) {
-    const contact = data.sections?.contact;
+    const contact = data.main?.contact;
     if (!contact) return;
-
     setText("contact-title", contact.title ?? "Contact");
-
-    const lines = $("contact-lines");
-    if (!lines) return;
-    clearChildren(lines);
-
-    for (const line of contact.lines ?? []) {
-        lines.appendChild(el("p", { className: "contact-line", text: line }));
-    }
+    setText("contact-text", contact.text ?? "");
 }
 
 function renderFooter(data) {
-    // year
     setText("year", String(new Date().getFullYear()));
-
-    // lab name - reuse hero.labName
-    const labName = data.hero?.labName ?? "";
-    setText("footer-lab-name", labName);
-
-    // copyright + disclaimer from JSON
-    const footer = data.sections?.footer ?? {};
+    const footer = data.footer ?? {};
+    setText("footer-creator", footer.creator ?? "");
     setText("footer-copyright", footer.copyright ?? "");
     setText("footer-disclaimer", footer.disclaimer ?? "");
 }
@@ -389,6 +344,7 @@ function renderFooter(data) {
 async function main() {
     try {
         const data = await loadJSON("content/content.json");
+        renderFavicon(data);
         renderMeta(data);
         renderHeader(data);
         renderHero(data);
